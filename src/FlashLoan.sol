@@ -12,7 +12,7 @@ contract FlashLoan is Test {
     AaveInterface public aave;
 
     constructor() {
-        aave = AaveInterface(0x794a61358D6845594F94dc1DB02A252b5b4814aD);
+        aave = AaveInterface(0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2);
     }
 
     function getCurrentFee() external view returns (uint128) {
@@ -34,7 +34,7 @@ contract FlashLoan is Test {
         uint256 wethBalance = ERC20Interface(asset).balanceOf(address(this));
         require(wethBalance == 1005 ether, "flashloan didn't work");
 
-        // Logic ...
+        // Logic goes here
         ///
 
         return true;

@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 
 interface CheatCodes {
     function createFork(string calldata, uint256) external returns (uint256);
-    function createSelectFork(string calldata, uint256) external returns (uint256);
+    function createSelectFork(string calldata) external returns (uint256);
 }
 
 contract TestUtils is Test {

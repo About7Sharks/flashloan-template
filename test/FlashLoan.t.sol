@@ -12,20 +12,20 @@ contract FlashLoanTest is Test, TestUtils {
     FlashLoan public flashLoan;
 
     // Arbitrum.
-    address public constant WETH = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1;
+    address public constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
     uint256 public constant INITIAL_WETH = 5 ether;
 
     uint256 public constant WETH_LOAN = 1000 ether;
 
     function setUp() public {
-        cheat.createSelectFork("arbitrum", 51691847);
+        cheat.createSelectFork(vm.rpcUrl("mainnet"));
         flashLoan = new FlashLoan();
 
-        // We wrap some eth.
+        // Wrap Eth.
         (bool success,) = WETH.call{value: INITIAL_WETH}("");
         require(success, "WETH transfer failed");
-
+        console.log("WETH balance: %s", ERC20Interface(WETH).balanceOf(address(this)));
         // We transfer weth to the flash loan contract.
         (success,) =
             WETH.call{value: 0}(abi.encodeWithSignature("transfer(address,uint256)", address(flashLoan), INITIAL_WETH));
