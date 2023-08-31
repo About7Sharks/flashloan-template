@@ -4,7 +4,7 @@ A set of contracts and tests to take a 1000 WETH flashloan from aave v3 built us
 ## Usage
 create a .env with mainnet rpc url
 ```
-echo "mainnetL=<your_rpc_url>" > .env
+echo "mainnet=<your_rpc_url>" > .env
 ```
 ### Build
 
